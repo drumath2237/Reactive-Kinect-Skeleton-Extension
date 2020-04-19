@@ -61,3 +61,5 @@ crashlytics-build.properties
 Assets/Plugins/KinectView/
 
 Assets/Standard Assets/
+
+Assets/Plugins/UniRx/
