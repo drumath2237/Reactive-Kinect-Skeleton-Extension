@@ -1,4 +1,5 @@
-﻿using Kinect = Windows.Kinect;
+﻿using UnityEngine;
+using Kinect = Windows.Kinect;
 
 namespace ReactiveKinectExtension
 {
@@ -25,6 +26,24 @@ namespace ReactiveKinectExtension
         public KinectJointPose ankleRight;
         public KinectJointPose footRight;
         public KinectJointPose spineShoulder;
+
+        public void UpdateSkelton(Kinect.Body body)
+        {
+            spineBase = GetPoseDataFromBody(body, Kinect.JointType.SpineBase);
+            spineMid = GetPoseDataFromBody(body, Kinect.JointType.SpineMid);
+            neck = get
+        }
+
+        private KinectJointPose GetPoseDataFromBody(Kinect.Body body, Kinect.JointType type)
+        {
+            KinectJointPose res;
+            res.jointType = type;
+            res.Pose = new Pose(
+                KinectTransformDataConverter.KinectData2Position(body.Joints[type]),
+                KinectTransformDataConverter.kinectData2Quaternion(body.JointOrientations[type])
+            );
+            return res;
+        }
 
     }
 }
