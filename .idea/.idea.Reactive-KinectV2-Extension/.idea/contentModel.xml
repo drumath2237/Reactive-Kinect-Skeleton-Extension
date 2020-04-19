@@ -6,6 +6,7 @@
     <e p="D:\kaitoFolder\programs\Reactive-KinectV2-Extension" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Plugins" t="Include">
           <e p="KinectView" t="Include">
@@ -301,6 +302,9 @@
               </e>
             </e>
           </e>
+        </e>
+        <e p="ReactiveKinectExtension" t="Include">
+          <e p="KinectJointPose.cs" t="Include" />
         </e>
         <e p="Standard Assets" t="Include">
           <e p="CameraIntrinsics.cs" t="Include" />
