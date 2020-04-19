@@ -305,6 +305,7 @@
         </e>
         <e p="ReactiveKinectExtension" t="Include">
           <e p="KinectJointPose.cs" t="Include" />
+          <e p="KinectSkeltonData.cs" t="Include" />
         </e>
         <e p="Standard Assets" t="Include">
           <e p="CameraIntrinsics.cs" t="Include" />
