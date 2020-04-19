@@ -1,48 +1,50 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Kinect = Windows.Kinect;
 
 namespace ReactiveKinectExtension
 {
     public struct KinectSkeltonData
     {
-        public KinectJointPose spineBase;
-        public KinectJointPose spineMid;
-        public KinectJointPose neck;
-        public KinectJointPose head;
-        public KinectJointPose shoulderLeft;
-        public KinectJointPose elbowLeft;
-        public KinectJointPose wristLeft;
-        public KinectJointPose handLeft;
-        public KinectJointPose shoulderRight;
-        public KinectJointPose elbowRight;
-        public KinectJointPose wristRight;
-        public KinectJointPose handRight;
-        public KinectJointPose hipLeft;
-        public KinectJointPose kneeLeft;
-        public KinectJointPose ankleLeft;
-        public KinectJointPose footLeft;
-        public KinectJointPose hipRight;
-        public KinectJointPose kneeRight;
-        public KinectJointPose ankleRight;
-        public KinectJointPose footRight;
-        public KinectJointPose spineShoulder;
+        public KinectJointPose[] Joints { get; private set; }
+
+        public KinectSkeltonData(Kinect.Body body)
+        {
+            Joints = new KinectJointPose[25];
+            for (int i = 0; i < 25; i++)
+            {
+                Joints[i] = CreatePoseDataFromBody(body, (Kinect.JointType)Enum.ToObject(typeof(Kinect.JointType), i));
+            }
+        }
 
         public void UpdateSkelton(Kinect.Body body)
         {
-            spineBase = GetPoseDataFromBody(body, Kinect.JointType.SpineBase);
-            spineMid = GetPoseDataFromBody(body, Kinect.JointType.SpineMid);
-            neck = get
+            Joints = new KinectJointPose[25];
+            for (int i = 0; i < 25; i++)
+            {
+                Joints[i] = CreatePoseDataFromBody(body, (Kinect.JointType)Enum.ToObject(typeof(Kinect.JointType), i));
+            }
+
         }
 
-        private KinectJointPose GetPoseDataFromBody(Kinect.Body body, Kinect.JointType type)
+        private KinectJointPose CreatePoseDataFromBody(Kinect.Body body, Kinect.JointType type)
         {
             KinectJointPose res;
             res.jointType = type;
-            res.Pose = new Pose(
+            res.pose = new Pose(
                 KinectTransformDataConverter.KinectData2Position(body.Joints[type]),
                 KinectTransformDataConverter.kinectData2Quaternion(body.JointOrientations[type])
             );
             return res;
+        }
+
+        public KinectJointPose GetJointPose(Kinect.JointType type)
+        {
+            foreach (var joint in Joints)
+            {
+                if (joint.jointType == type) return joint;
+            }
+            return new KinectJointPose();
         }
 
     }

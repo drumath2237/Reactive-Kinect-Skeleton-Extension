@@ -6,6 +6,6 @@ namespace ReactiveKinectExtension
     public struct KinectJointPose
     {
         public Kinect.JointType jointType;
-        public Pose Pose;
+        public Pose pose;
     }
 }
