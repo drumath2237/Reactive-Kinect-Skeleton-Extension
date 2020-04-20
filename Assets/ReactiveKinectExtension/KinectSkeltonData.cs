@@ -6,7 +6,7 @@ namespace ReactiveKinectExtension
 {
     public struct KinectSkeltonData
     {
-        public KinectJointPose[] Joints { get; private set; }
+        public KinectJointPose[] Joints { get; }
 
         public KinectSkeltonData(Kinect.Body body)
         {
@@ -16,17 +16,7 @@ namespace ReactiveKinectExtension
                 Joints[i] = CreatePoseDataFromBody(body, (Kinect.JointType)Enum.ToObject(typeof(Kinect.JointType), i));
             }
         }
-
-        public void UpdateSkelton(Kinect.Body body)
-        {
-            Joints = new KinectJointPose[25];
-            for (int i = 0; i < 25; i++)
-            {
-                Joints[i] = CreatePoseDataFromBody(body, (Kinect.JointType)Enum.ToObject(typeof(Kinect.JointType), i));
-            }
-
-        }
-
+        
         private KinectJointPose CreatePoseDataFromBody(Kinect.Body body, Kinect.JointType type)
         {
             KinectJointPose res;
