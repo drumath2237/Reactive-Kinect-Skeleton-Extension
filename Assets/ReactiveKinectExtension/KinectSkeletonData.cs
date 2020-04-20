@@ -4,11 +4,11 @@ using Kinect = Windows.Kinect;
 
 namespace ReactiveKinectExtension
 {
-    public struct KinectSkeltonData
+    public struct KinectSkeletonData
     {
-        public KinectJointPose[] Joints { get; }
+        public KinectJointPose[] Joints { get; private set; }
 
-        public KinectSkeltonData(Kinect.Body body)
+        public KinectSkeletonData(Kinect.Body body)
         {
             Joints = new KinectJointPose[25];
             for (int i = 0; i < 25; i++)
@@ -23,7 +23,7 @@ namespace ReactiveKinectExtension
             res.jointType = type;
             res.pose = new Pose(
                 KinectTransformDataConverter.KinectData2Position(body.Joints[type]),
-                KinectTransformDataConverter.kinectData2Quaternion(body.JointOrientations[type])
+                KinectTransformDataConverter.KinectData2Quaternion(body.JointOrientations[type])
             );
             return res;
         }

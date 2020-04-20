@@ -6,26 +6,31 @@ using Kinect = Windows.Kinect;
 
 namespace ReactiveKinectExtension
 {
-    [RequireComponent(typeof(BodySourceManager))]
+//    [RequireComponent(typeof(BodySourceManager))]
     public class ReactiveKinectSkeltonSensor : MonoBehaviour
     {
+        [SerializeField] private GameObject bodysourcemanager_obj;
+        
         private BodySourceManager _bodySource;
 
-        private ReactiveProperty<KinectSkeltonData> _skelton;
+        private ReactiveProperty<KinectSkeletonData> _skeleton;
 
-        public ReactiveProperty<KinectSkeltonData> Skelton => _skelton;
+        public ReactiveProperty<KinectSkeletonData> Skeleton => _skeleton;
 
-        private void Start()
+        private void Awake()
         {
-            _bodySource = GetComponent<BodySourceManager>();
+            _bodySource = bodysourcemanager_obj. GetComponent<BodySourceManager>();
+            _skeleton = new ReactiveProperty<KinectSkeletonData>();
+
         }
 
         private void Update()
         {
+            _bodySource = bodysourcemanager_obj.GetComponent<BodySourceManager>();
             Kinect.Body body = _bodySource.GetData().FirstOrDefault(b => b.IsTracked);
             if (body != null)
             {
-                _skelton = new ReactiveProperty<KinectSkeltonData>(new KinectSkeltonData(body));
+                _skeleton.Value = new KinectSkeletonData(body);
             }
         }
     }
