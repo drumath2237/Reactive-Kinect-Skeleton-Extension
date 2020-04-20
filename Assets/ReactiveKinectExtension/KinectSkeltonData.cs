@@ -47,5 +47,6 @@ namespace ReactiveKinectExtension
             return new KinectJointPose();
         }
 
+        public KinectJointPose this[Kinect.JointType type] => GetJointPose(type);
     }
 }
