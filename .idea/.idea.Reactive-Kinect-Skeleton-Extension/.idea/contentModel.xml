@@ -307,7 +307,7 @@
           <e p="KinectJointPose.cs" t="Include" />
           <e p="KinectSkeletonData.cs" t="Include" />
           <e p="KinectTransformDataConverter.cs" t="Include" />
-          <e p="ReactiveKinectSkeltonSensor.cs" t="Include" />
+          <e p="ReactiveKinectSkeletonSensor.cs" t="Include" />
           <e p="SampleSkeletonView.cs" t="Include" />
         </e>
         <e p="Standard Assets" t="Include">

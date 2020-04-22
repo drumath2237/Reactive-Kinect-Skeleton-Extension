@@ -5,14 +5,14 @@ using Kinect = Windows.Kinect;
 
 namespace ReactiveKinectExtension
 {
-    [RequireComponent(typeof(ReactiveKinectSkeltonSensor))]
+    [RequireComponent(typeof(ReactiveKinectSkeletonSensor))]
     public class SampleSkeletonView : MonoBehaviour
     {
         private KinectSkeletonData _skeletonData;
-        private ReactiveKinectSkeltonSensor _sensor;
+        private ReactiveKinectSkeletonSensor _sensor;
         private void Start()
         {
-            _sensor = GetComponent<ReactiveKinectSkeltonSensor>();
+            _sensor = GetComponent<ReactiveKinectSkeletonSensor>();
             
             _sensor.Skeleton.Subscribe(skeleton =>
             {
