@@ -1,5 +1,6 @@
 ﻿using System;
 using UniRx;
+using UnityEditor;
 using UnityEngine;
 using Kinect = Windows.Kinect;
 
@@ -20,9 +21,10 @@ namespace ReactiveKinectSkeletonExtension.Sample
             }).AddTo(gameObject);
         }
         
-        private void OnDrawGizmosSelected()
+        private void OnDrawGizmos()
         {
-            for (int i = 0; i < 21; i++)
+            if (!EditorApplication.isPlaying) return;
+            for (var i = 0; i < 21; i++)
             {
                 Gizmos.DrawWireSphere(_skeletonData[(Kinect.JointType)Enum.ToObject(typeof(Kinect.JointType),i)].pose.position, 0.05f);
             }
