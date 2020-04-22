@@ -21,13 +21,12 @@ namespace ReactiveKinectExtension
         
         private KinectJointPose CreatePoseDataFromBody(Kinect.Body body, Kinect.JointType type)
         {
-            KinectJointPose res;
-            res.jointType = type;
-            res.pose = new Pose(
+            var p = new Pose(
                 KinectTransformDataConverter.KinectData2Position(body.Joints[type]),
                 KinectTransformDataConverter.KinectData2Quaternion(body.JointOrientations[type])
             );
-            return res;
+
+            return new KinectJointPose(type, p);
         }
 
         private KinectJointPose GetJointPose(Kinect.JointType type)
