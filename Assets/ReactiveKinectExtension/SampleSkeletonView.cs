@@ -20,7 +20,7 @@ namespace ReactiveKinectExtension
             }).AddTo(gameObject);
         }
         
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             for (int i = 0; i < 21; i++)
             {
