@@ -6,12 +6,12 @@ namespace ReactiveKinectExtension
 {
     public struct KinectSkeletonData
     {
-        public KinectJointPose[] Joints { get; private set; }
+        private KinectJointPose[] Joints {  get;  set; }
 
         public KinectSkeletonData(Kinect.Body body)
         {
             Joints = new KinectJointPose[25];
-            for (int i = 0; i < 25; i++)
+            for (var i = 0; i < 25; i++)
             {
                 Joints[i] = CreatePoseDataFromBody(body, (Kinect.JointType)Enum.ToObject(typeof(Kinect.JointType), i));
             }
@@ -28,7 +28,7 @@ namespace ReactiveKinectExtension
             return res;
         }
 
-        public KinectJointPose GetJointPose(Kinect.JointType type)
+        private KinectJointPose GetJointPose(Kinect.JointType type)
         {
             foreach (var joint in Joints)
             {
