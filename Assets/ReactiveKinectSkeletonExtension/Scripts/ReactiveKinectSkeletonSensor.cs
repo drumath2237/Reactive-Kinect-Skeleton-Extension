@@ -13,6 +13,8 @@ namespace ReactiveKinectSkeletonExtension
 
         private ReactiveProperty<KinectSkeletonData> _skeleton;
         public IReadOnlyReactiveProperty<KinectSkeletonData> Skeleton => _skeleton;
+        [SerializeField] private bool _isMirror;
+        
 
         private void Awake()
         {
@@ -26,7 +28,7 @@ namespace ReactiveKinectSkeletonExtension
             Kinect.Body body = _bodySource.GetData().FirstOrDefault(b => b.IsTracked);
             if (body != null)
             {
-                _skeleton.Value = new KinectSkeletonData(body);
+                _skeleton.Value = !_isMirror ? new KinectSkeletonData(body) : new KinectSkeletonData(body).ToMirror();
             }
         }
     }
