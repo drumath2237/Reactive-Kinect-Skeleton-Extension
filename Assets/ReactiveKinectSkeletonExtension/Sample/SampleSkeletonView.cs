@@ -3,7 +3,7 @@ using UniRx;
 using UnityEngine;
 using Kinect = Windows.Kinect;
 
-namespace ReactiveKinectExtension
+namespace ReactiveKinectSkeletonExtension.Sample
 {
     [RequireComponent(typeof(ReactiveKinectSkeletonSensor))]
     public class SampleSkeletonView : MonoBehaviour

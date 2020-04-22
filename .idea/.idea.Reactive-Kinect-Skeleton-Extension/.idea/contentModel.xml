@@ -303,12 +303,16 @@
             </e>
           </e>
         </e>
-        <e p="ReactiveKinectExtension" t="Include">
-          <e p="KinectJointPose.cs" t="Include" />
-          <e p="KinectSkeletonData.cs" t="Include" />
-          <e p="KinectTransformDataConverter.cs" t="Include" />
-          <e p="ReactiveKinectSkeletonSensor.cs" t="Include" />
-          <e p="SampleSkeletonView.cs" t="Include" />
+        <e p="ReactiveKinectSkeletonExtension" t="Include">
+          <e p="Sample" t="Include">
+            <e p="SampleSkeletonView.cs" t="Include" />
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="KinectJointPose.cs" t="Include" />
+            <e p="KinectSkeletonData.cs" t="Include" />
+            <e p="KinectTransformDataConverter.cs" t="Include" />
+            <e p="ReactiveKinectSkeletonSensor.cs" t="Include" />
+          </e>
         </e>
         <e p="Standard Assets" t="Include">
           <e p="CameraIntrinsics.cs" t="Include" />

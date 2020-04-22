@@ -1,10 +1,9 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using UniRx;
 using UnityEngine;
 using Kinect = Windows.Kinect;
 
-namespace ReactiveKinectExtension
+namespace ReactiveKinectSkeletonExtension
 {
     [RequireComponent(typeof(BodySourceManager))]
     public class ReactiveKinectSkeletonSensor : MonoBehaviour

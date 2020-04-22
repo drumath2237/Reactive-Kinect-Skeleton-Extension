@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Kinect = Windows.Kinect;
 
-namespace ReactiveKinectExtension
+namespace ReactiveKinectSkeletonExtension
 {
     public class KinectTransformDataConverter
     {
