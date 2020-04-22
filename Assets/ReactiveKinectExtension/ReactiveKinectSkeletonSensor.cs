@@ -13,7 +13,6 @@ namespace ReactiveKinectExtension
         private BodySourceManager _bodySource;
 
         private ReactiveProperty<KinectSkeletonData> _skeleton;
-
         public IReadOnlyReactiveProperty<KinectSkeletonData> Skeleton => _skeleton;
 
         private void Awake()

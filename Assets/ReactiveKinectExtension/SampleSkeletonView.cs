@@ -19,12 +19,7 @@ namespace ReactiveKinectExtension
                 _skeletonData = skeleton;
             }).AddTo(gameObject);
         }
-
-//        private void Update()
-//        {
-//            Debug.Log(_skeltonData[Kinect.JointType.Head]);
-//        }
-
+        
         private void OnDrawGizmos()
         {
             for (int i = 0; i < 21; i++)

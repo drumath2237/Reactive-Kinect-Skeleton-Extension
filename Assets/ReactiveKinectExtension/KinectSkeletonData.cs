@@ -4,16 +4,18 @@ using Kinect = Windows.Kinect;
 
 namespace ReactiveKinectExtension
 {
-    public struct KinectSkeletonData
+    public readonly struct KinectSkeletonData
     {
-        private KinectJointPose[] Joints {  get;  set; }
+        private readonly KinectJointPose[] _joints;
 
         public KinectSkeletonData(Kinect.Body body)
         {
-            Joints = new KinectJointPose[25];
-            for (var i = 0; i < 25; i++)
+            var types = Enum.GetValues(typeof(Kinect.JointType));
+            _joints = new KinectJointPose[types.Length];
+
+            foreach (var joint in types)
             {
-                Joints[i] = CreatePoseDataFromBody(body, (Kinect.JointType)Enum.ToObject(typeof(Kinect.JointType), i));
+                _joints[(int) joint] = CreatePoseDataFromBody(body, (Kinect.JointType)joint);
             }
         }
         
@@ -30,11 +32,7 @@ namespace ReactiveKinectExtension
 
         private KinectJointPose GetJointPose(Kinect.JointType type)
         {
-            foreach (var joint in Joints)
-            {
-                if (joint.jointType == type) return joint;
-            }
-            return new KinectJointPose();
+            return _joints[(int) type];
         }
 
         public KinectJointPose this[Kinect.JointType type] => GetJointPose(type);
